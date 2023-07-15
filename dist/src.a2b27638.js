@@ -14792,12 +14792,13 @@ function _initMap() {
         case 0:
           map = _leaflet.default.map("map", {
             minZoom: -3
-          }).setView([61.05, 28.1], 14);
+          });
           _leaflet.default.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
             attribution: "© OpenStreetMap"
           }).addTo(map);
           geoJson = _leaflet.default.geoJSON(data, {
-            onEachFeature: getFeature(migNegData, migPosData)
+            onEachFeature: getFeature(migNegData, migPosData),
+            weight: 2
           }).addTo(map);
           map.fitBounds(geoJson.getBounds());
         case 4:
@@ -14879,7 +14880,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57016" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61911" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

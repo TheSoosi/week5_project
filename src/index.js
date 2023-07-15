@@ -29,14 +29,15 @@ async function fetchNegMigData() {
 async function initMap(data, migNegData, migPosData) {
     let map = L.map("map", {
         minZoom: -3,
-    }).setView([61.05, 28.1], 14);
+    });
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap"
     }).addTo(map);
 
     const geoJson = L.geoJSON(data, {
-        onEachFeature: getFeature(migNegData, migPosData)
+        onEachFeature: getFeature(migNegData, migPosData),
+        weight: 2
     }).addTo(map);
 
     map.fitBounds(geoJson.getBounds());
